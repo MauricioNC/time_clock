@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  check_in: 2023-01-20
+  checkout_date: MyString
+  lunch: 2023-01-20 20:33:01
+
+two:
+  check_in: 2023-01-20
+  checkout_date: MyString
+  lunch: 2023-01-20 20:33:01
