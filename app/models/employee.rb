@@ -1,5 +1,6 @@
 class Employee < ApplicationRecord
-  belongs_to :wages
-  belongs_to :employee_schedules
-  belongs_to :department
+  has_secure_password
+
+  belongs_to :department, class_name: "Department", foreign_key: "department_id"
 end
+
