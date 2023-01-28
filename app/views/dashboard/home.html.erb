@@ -1,5 +1,41 @@
-<span>
-  <%= @current_employee.name %>
-</span>
-
-<%= button_to "Logout", logout_path %>
+<header id="header">
+  <div id="left-items">
+    <h1>LOGO</h1>
+  </div>
+  <div id="searcher">
+    <%= form_with model: @employee, url: '' do |f| %>
+      <%= f.text_field :name, placeholder: "Search for an employee"  %>
+      <%= button_tag type: "submit" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+    <% end  %>
+  </div>
+  <div id="right-items">
+    <span id="create-user">
+      <i class="fa-solid fa-user-plus"></i>
+    </span>
+    <ul id="reports">
+      <li>
+        <span id="export-report">Export <i class="fa-solid fa-chevron-down"></i></span>
+        <ul>
+          <li>XLSX <i class="fa-regular fa-file-excel"></i></li>
+          <li>PDF <i class="fa-regular fa-file-pdf"></i></li>
+          <li>DOCX <i class="fa-regular fa-file-word"></i></li>
+          <li>Generate report</li>
+        </ul>
+      </li>
+    </ul>
+    <div class="employee-profile">
+      <div class="drop-down-menu">
+        <span>
+          <%= @current_employee.name %> <i class="fa-solid fa-chevron-down"></i>
+        </span>
+        <ul>
+          <li><%= link_to "Account", '' %></li>
+          <li><%= link_to "Setting", '' %></li>
+          <li><%= button_to "Logout", logout_path %></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
