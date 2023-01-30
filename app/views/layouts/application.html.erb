@@ -11,6 +11,11 @@
   </head>
 
   <body>
+    <% if @current_employee  %>
+      <%= render "shared/header" %>
+      <%= render "shared/sidebar" %>
+    <% end %>
+
     <%= flash[:error] %>
     <%= flash[:success] %>
 
