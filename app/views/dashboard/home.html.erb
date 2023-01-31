@@ -1,0 +1,69 @@
+<main>
+  <div class="top-cards">
+    <div class="card card-employees">
+      <h4>Employees <span>23%</span></h4>
+    </div>
+    <div class="card card-resigned-employees">
+      <h4>Resigned employees <span>-13%</span></h4>
+    </div>
+    <div class="card card-avg-early">
+      <h4>Average early</h4>
+      <span>7.0</span>
+    </div>
+    <div class="card card-applications">
+      <h4>Applications</h4>
+      <span>8</span>
+    </div>
+  </div>
+
+  <!-- #########################################################################  -->
+
+  <div class="statistics"></div> <!-- will be completed later with JS chart  -->
+
+  <!-- #########################################################################  -->
+
+  <div class="employee-status">
+    <table>
+      <thead class="header">
+        <tr>
+          <th><h4>Employee status</h4></th>
+          <th><button>Filter & show</button></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Location</th>
+          <th>Account role</th>
+          <th>Punctuality percentage</th>
+        </tr>
+        <tr>
+          <td><%= @current_employee.name %></td>
+          <td><%= @current_employee.department.department %></td>
+          <td><%= @current_employee.location %></td>
+          <td><%= @current_employee.account_role %></td>
+          <td>100%</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- #########################################################################  -->
+
+  <div class="distribution">
+    <h3>Employees distribution</h3>
+    <div class="employees-distribution">
+      <% @departments.each do |d| %>
+        <div clas="item">
+          <span class="department">
+            <%= d.department %>
+          </span>
+          <span class="num-of-employees">
+            <%= (get_total_employees_by_department(d.department) * 100) / @total_employees %>%
+          </span>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>
