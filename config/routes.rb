@@ -6,4 +6,5 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
 
   get '/home', to: 'dashboard#home'
+  get '/search', to: 'dashboard#searcher'
 end

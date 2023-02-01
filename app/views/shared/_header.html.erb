@@ -3,9 +3,9 @@
     <h1>LOGO</h1>
   </div>
   <div id="searcher">
-    <%= form_with model: @employee, url: '' do |f| %>
-      <%= f.text_field :name, placeholder: "Search for an employee"  %>
-      <%= button_tag type: "submit" do %>
+    <%= form_with url: '/search', role: :search, method: :get, html: { autocomplete: "off" } do |f| %>
+      <%= f.text_field :employee, placeholder: "Search for an employee"  %>
+       <%= button_tag type: "submit", name: nil do %>
         <i class="fa-solid fa-magnifying-glass"></i>
       <% end %>
     <% end  %>
