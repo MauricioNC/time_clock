@@ -1,0 +1,18 @@
+<hr>
+<div class="searched-employee">
+  <% if @searched_employee.respond_to?(:each) %>
+    <% @searched_employee.each_with_index do |employee, i| %>
+      <div class="searched-employee-card">
+        <div class="card-header">
+          <span id="name"><%= @searched_employee[i].name %></span> | <span id="department"><%= @searched_employee[i].department.department %></span>
+        </div>
+        <div class="card-body">
+          <span id="role"><%= @searched_employee[i].account_role %></span>
+        </div>
+        <div class="card-footer">
+          <%= link_to "Go to analysis", '' %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
