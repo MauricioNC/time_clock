@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   get '/home', to: 'dashboard#home'
   get '/search', to: 'dashboard#searcher'
+
+  get '/analysis/employee/:employee_name', to: 'employees#analysis', as: "analysis_employee"
 end

@@ -4,13 +4,13 @@
     <% @searched_employee.each_with_index do |employee, i| %>
       <div class="searched-employee-card">
         <div class="card-header">
-          <span id="name"><%= @searched_employee[i].name %></span> | <span id="department"><%= @searched_employee[i].department.department %></span>
+          <span id="name"><%= employee.name %></span> | <span id="department"><%= employee.department.department %></span>
         </div>
         <div class="card-body">
-          <span id="role"><%= @searched_employee[i].account_role %></span>
+          <span id="role"><%= employee.account_role %></span>
         </div>
         <div class="card-footer">
-          <%= link_to "Go to analysis", '' %>
+          <%= link_to "Go to analysis", analysis_employee_path(employee.name)%>
         </div>
       </div>
     <% end %>

@@ -6,10 +6,16 @@ class ApplicationController < ActionController::Base
   end
 
   def get_current_user
-    @current_user = session[:user_id]
+    session[:user_id]
   end
 
   def authenticate
     redirect_to login_path, error: "Log in to access this page" if login?
+  end
+
+  private
+
+  def set_current_employee
+    @current_employee = Employee.find(get_current_user)
   end
 end

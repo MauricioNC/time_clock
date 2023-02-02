@@ -12,10 +12,4 @@ class DashboardController < ApplicationController
   def searcher
     @searched_employee
   end
-
-  private
-
-  def set_current_employee
-    @current_employee = Employee.find(get_current_user)
-  end
 end
