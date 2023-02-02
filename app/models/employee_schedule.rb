@@ -1,3 +1,3 @@
 class EmployeeSchedule < ApplicationRecord
-  has_many :employees, class_name: "employee", foreign_key: "reference_id"
+  belongs_to :employee, class_name: "employee", foreign_key: "employee_id"
 end

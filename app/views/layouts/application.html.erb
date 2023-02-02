@@ -13,7 +13,7 @@
   <body>
     <% if @current_employee  %>
       <%= render "shared/header" %>
-      <%= render "shared/sidebar" %>
+      <%= render "shared/sidebar" unless @disable_sidebar %>
     <% end %>
 
     <%= flash[:error] %>

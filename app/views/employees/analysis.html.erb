@@ -1,0 +1,35 @@
+<% if @employee && @employee_arrived_time %>
+  <div class="analysis_sidebar">
+    <ul>
+      <li><a href="#employee-info">Employee information</a></li>
+      <li><a href="#arrived-time-status">Arrived time status</a></li>
+      <li><a href="#other-information">Other information</a></li>
+    </ul>
+  </div>
+  <div class="employee-analysis">
+    <div class="employee-info" id="employee-info">
+      <h2>Employee information</h2>
+      <span><%= @employee.name %></span>
+      <span><%= @employee.email %></span>
+      <span><%= @employee.location %></span>
+      <span><%= @employee.address %></span>
+      <span><%= @employee.account_role %></span>
+    </div>
+    <div class="arrived-time-status" id="arrived-time-status">
+      <div id="check_in">
+        <%= "check_in: #{@employee_arrived_time.check_in}" %>
+      </div>
+      <div id="checkout">
+        <%= @employee_arrived_time.checkout ? "check_out: #{@employee_arrived_time.checkout}" : "check_out: --"  %>
+      </div>
+      <div id="lunch">
+        <%= @employee_arrived_time.lunch %>
+      </div>
+    </div>
+    <div class="other-information" id="other-information">
+      <span>Salary: <%= 0 %></span>
+      <span>Department: <%= @employee.department.department %></span>
+      <span>Current manager: <%= @employee.department.manager %></span>
+    </div>
+  </div>
+<% end %>
