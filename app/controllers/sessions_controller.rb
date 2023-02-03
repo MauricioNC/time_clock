@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
 
     if @employee&.authenticate(params[:password])
       session[:user_id] = @employee.id
-      redirect_to '/home', success: "Welcome back!! #{@employee.name}"
+      redirect_to root_path, success: "Welcome back!! #{@employee.name}"
     else
       redirect_to login_path
     end
