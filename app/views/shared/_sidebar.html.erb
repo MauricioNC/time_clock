@@ -8,13 +8,13 @@
   </div>
   <div class="sidebar-items">
     <ul>
-      <li><i class="fa-solid fa-house"></i> Dashboard</li>
-      <li><i class="fa-solid fa-users-line"></i> Employees</li>
-      <li><i class="fa-regular fa-calendar"></i> Calendar</li>
-      <li><i class="fa-solid fa-square-poll-vertical"></i> Statistics</li>
+      <li><i class="fa-solid fa-house"></i> <%= link_to "Dashboard", root_path %></li>
+      <li><i class="fa-solid fa-users-line"></i> <%= link_to "Employees", employees_path %></li>
+      <li><i class="fa-regular fa-calendar"></i> <%= link_to "Calendar", schedule_of_activities_path %></li>
+      <li><i class="fa-solid fa-square-poll-vertical"></i> <%= link_to "Statistics", statistics_path %></li>
       <hr>
-      <li><i class="fa-solid fa-circle-user"></i> Profile</li>
-      <li><i class="fa-solid fa-gear"></i> Settings</li>
+      <li><i class="fa-solid fa-circle-user"></i> <%= link_to "Account", account_path %></li>
+      <li><i class="fa-solid fa-gear"></i> <%= link_to "Settings", settings_path %></li>
     </ul>
   </div>
 </div>

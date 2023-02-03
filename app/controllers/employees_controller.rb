@@ -6,4 +6,10 @@ class EmployeesController < ApplicationController
     @employee = Employee.find_by(name: params[:employee_name])
     @employee_arrived_time = EmployeeSchedule.where(employee_id: @employee.id).first
   end
+
+  def account
+  end
+
+  def settings
+  end
 end
