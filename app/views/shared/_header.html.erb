@@ -31,8 +31,8 @@
           <%= @current_employee.name  %> <i class="fa-solid fa-chevron-down"></i>
         </span>
         <ul>
-          <li><%= link_to "Account", '' %></li>
-          <li><%= link_to "Setting", '' %></li>
+          <li><%= link_to "Account", account_path %></li>
+          <li><%= link_to "Setting", settings_path %></li>
           <li><%= button_to "Logout", logout_path %></li>
         </ul>
       </div>
