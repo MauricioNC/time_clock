@@ -1,1 +1,35 @@
-<h1>View to list all the empoloyees in table form</h1>
+<table>
+  <thead class="table-head">
+    <tr>
+      <th class="table-head--th">Name</th>
+      <th class="table-head--th">Email</th>
+      <th class="table-head--th">Address</th>
+      <th class="table-head--th">Location</th>
+      <th class="table-head--th">Account role</th>
+      <th class="table-head--th">Department</th>
+      <th class="table-head--th">Current role</th>
+      <th class="table-head--th">Options</th>
+      <th class="table-head--th">Actions</th>
+    </tr>
+  </thead>
+  <tbody class="table-body">
+    <% @employees.each do |e| %>
+      <tr class="table-row">
+        <td class="table-data"><%= e.name %></td>
+        <td class="table-data"><%= e.email %></td>
+        <td class="table-data"><%= e.address %></td>
+        <td class="table-data"><%= e.location %></td>
+        <td class="table-data"><%= e.account_role %></td>
+        <td class="table-data"><%= e.department.department %></td>
+        <td class="table-data"><%= e.department.manager %></td>
+        <td class="table-data"><%= link_to "See more detailed information", '' %></td>
+        <td class="table-data">
+          <div class="actions">
+            <%= link_to "Update", '', class: "action-update" %>
+            <%= link_to "Delete", '', class: "action-delete"%>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
