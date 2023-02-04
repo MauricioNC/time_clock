@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :employees
+  resources :departments, only: [:new, :create, :update, :destroy]
 
   root 'dashboard#home'
 
