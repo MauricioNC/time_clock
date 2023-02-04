@@ -11,9 +11,14 @@
     <% end  %>
   </div>
   <div id="right-items">
-    <span id="create-user">
+    <span id="create-employee">
       <%= link_to new_employee_path do%>
         <i class="fa-solid fa-user-plus"></i>
+      <% end %>
+    </span>
+    <span id="create-department">
+      <%= link_to new_department_path do%>
+        <i class="fa-solid fa-people-group"></i>
       <% end %>
     </span>
     <ul id="reports">

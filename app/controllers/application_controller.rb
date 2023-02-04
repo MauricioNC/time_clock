@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
   add_flash_types :info, :error, :warning, :success
 
   def login?
@@ -10,7 +11,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    redirect_to login_path, error: "Log in to access this page" if login?
+    if login?
+      redirect_to login_path, error: "Log in to access this page"
+      return
+    end
+    set_current_employee
   end
 
   private

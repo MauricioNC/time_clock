@@ -1,0 +1,5 @@
+<%= form_with model: @department, html: {autocomplete: "off"} do |f| %>
+  <%= f.text_field :department, placeholder: "Department name" %>
+  <%= f.text_field :manager, placeholder: "Manager" %>
+  <%= f.submit "Create new department" %>
+<% end %>
