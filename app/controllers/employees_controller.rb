@@ -5,6 +5,11 @@ class EmployeesController < ApplicationController
     @employees = Employee.all
   end
 
+  def new
+    @employee = Emploeyee.new
+  end
+
+
   def analysis
     @disable_sidebar = true
     @employee = Employee.find_by(name: params[:employee_name])
