@@ -22,7 +22,7 @@
         <td class="table-data"><%= e.account_role %></td>
         <td class="table-data"><%= e.department.department %></td>
         <td class="table-data"><%= e.department.manager %></td>
-        <td class="table-data"><%= link_to "See more detailed information", '' %></td>
+        <td class="table-data"><%= link_to "See more detailed information", analysis_employee_path(e.name) %></td>
         <td class="table-data">
           <div class="actions">
             <%= link_to "Update", '', class: "action-update" %>
