@@ -2,7 +2,7 @@ class EmployeesController < ApplicationController
   before_action :authenticate, :set_current_employee
 
   def index
-    @employees = Employee.all
+    @employees = Employee.all.order(created_at: :ASC)
   end
 
   def new
@@ -16,6 +16,29 @@ class EmployeesController < ApplicationController
       redirect_to root_path, success: "The employee #{@employee.name} was registered successfully."
     else
       render :new, error: @employee.errors.full_messages
+    end
+  end
+
+  def edit
+    @employee = Employee.find(params[:id])
+  end
+
+  def update
+    @employee = Employee.find(params[:id])
+    if @employee.update(employee_params)
+      redirect_to employees_path, success: "Employee updated successfully"
+      return
+    else
+      redirect_to edit_employee_path(@employee.id), error: "Something went wrong pleas try again."
+    end
+  end
+
+  def destroy
+    if Employee.find(params[:id]).delete
+      redirect_to employees_path, success: "Employee deleted successfully."
+      return
+    else
+      redirect_to employees_path, error: "Error deleting the employees with id #{params[:id]}"
     end
   end
 

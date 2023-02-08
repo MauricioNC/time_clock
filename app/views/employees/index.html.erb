@@ -25,8 +25,8 @@
         <td class="table-data"><%= link_to "See more detailed information", analysis_employee_path(e.name) %></td>
         <td class="table-data">
           <div class="actions">
-            <%= link_to "Update", '', class: "action-update" %>
-            <%= link_to "Delete", '', class: "action-delete"%>
+            <%= link_to "Update", edit_employee_path(e.id), class: "action-update" %>
+            <%= button_to "Delete", "/employees/#{e.id}", method: :delete, class: "action-delete" %>
           </div>
         </td>
       </tr>
