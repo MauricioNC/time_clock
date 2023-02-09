@@ -54,6 +54,7 @@ class EmployeesController < ApplicationController
   end
 
   def settings
+    @disable_sidebar = true
   end
 
   private
