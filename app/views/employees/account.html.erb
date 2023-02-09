@@ -1,0 +1,60 @@
+<div class="profile-settings">
+  <h1>Profile settings</h1>
+
+  <div class="general-information">
+    <%= link_to "Go to update all information", edit_employee_path(@current_employee.id) %>
+    <div class="item">
+      <%= @current_employee.name %><button>Update</button>
+      <div class="form_for_name">
+        <%= form_with model: @employee do |f| %>
+          <%= f.text_field :name, placeholder: "Name" %>
+          <%= f.submit "Update" %>
+        <% end  %>
+      </div>
+    </div>
+    <div class="item">
+      <%= @current_employee.email %><button>Update</button>
+      <div class="form_for_email">
+        <%= form_with model: @employee do |f| %>
+          <%= f.text_field :name, placeholder: "Name" %>
+          <%= f.submit "Update" %>
+        <% end  %>
+      </div>
+    </div>
+    <div class="item">
+      <%= @current_employee.location %><button>Update</button>
+      <div class="form_for_location">
+        <%= form_with model: @employee do |f| %>
+          <%= f.text_field :name, placeholder: "Name" %>
+          <%= f.submit "Update" %>
+        <% end  %>
+      </div>
+    </div>
+    <div class="item">
+      <%= @current_employee.address %><button>Update</button>
+      <div class="form_for_address">
+        <%= form_with model: @employee do |f| %>
+          <%= f.text_field :name, placeholder: "Name" %>
+          <%= f.submit "Update" %>
+        <% end  %>
+      </div>
+    </div>
+    <div class="item">
+      <%= @current_employee.phone %><button>Update</button>
+      <div class="form_for_phone">
+        <%= form_with model: @employee do |f| %>
+          <%= f.text_field :name, placeholder: "Name" %>
+          <%= f.submit "Update" %>
+        <% end  %>
+      </div>
+    </div>
+    <div class="item">
+      <%= @current_employee.department.department %>
+    </div>
+    <div class="item">
+      <%= @current_employee.department.manager %>
+    </div>
+  </div>
+</div>
+
+
