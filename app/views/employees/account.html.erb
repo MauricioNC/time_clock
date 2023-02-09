@@ -1,0 +1,39 @@
+<div class="profile-settings">
+  <h1>Profile settings</h1>
+
+  <div class="general-information">
+    <%= link_to "Go to update all information", edit_employee_path(@current_employee.id) %>
+    <%  @current_employee.as_json.each do |e| %>
+      <% if e[0] != "id" && e[0] != "created_at" && e[0] != "updated_at" && e[0] != "password_digest" %>
+        <% if e[0] == "account_role" %>
+          <div class="item">
+            <span>Account Role: <%= e[1] %></span>
+          </div>
+        <% else %>
+          <% if e[0] == "department_id"%>
+            <div class="item">
+              <span>Department: <%= @current_employee.department.department %></span>
+            </div>
+            <div class="item">
+              <span>Manager: <%= @current_employee.department.manager %></span>
+            </div>
+          <% else%>
+            <div class="item">
+              <div class="item-value">
+                <span class="key"><%=e[0]%></span><span class="value"><%= e[1] %></span><button>Update</button>
+              </div>
+              <div class="form_for_<%= e[0] %>">
+                <%= form_with model: @employee, url: "/employees/#{@current_employee.id}", method: :patch do |f| %>
+                  <%= f.text_field e[0], placeholder: e[0] %>
+                  <%= f.submit "Update" %>
+                <% end  %>
+              </div>
+            </div>
+          <% end%>
+        <% end%>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+
