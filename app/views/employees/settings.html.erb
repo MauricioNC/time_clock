@@ -1,1 +1,24 @@
-<h1>Settings</h1>
+<div class="sidebar">
+  <div class="settings">
+    <%= link_to "Account info", '#account-info' %>
+    <%= link_to "Theme", '#theme' %>
+  </div>
+  <div class="account-info" id="account-info">
+    <h2>Settings</h2>
+    <ul class="list-info">
+      <li class="item"><%= @current_employee.name %></li>
+      <li class="item"><%= @current_employee.email %></li>
+      <li class="item"><%= @current_employee.address %></li>
+      <li class="item"><%= @current_employee.location %></li>
+      <li class="item"><%= @current_employee.phone %></li>
+      <li class="item"><%= @current_employee.account_role %></li>
+      <li class="item"><%= @current_employee.department.department %></li>
+      <li class="item"><%= @current_employee.department.manager %></li>
+    </ul>
+  </div>
+  <div class="theme" id="theme">
+    <h2>Theme</h2>
+    <button id="dark">Dark theme</button>
+    <button id="light">Light theme</button>
+  </div>
+</div>
