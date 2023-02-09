@@ -3,57 +3,36 @@
 
   <div class="general-information">
     <%= link_to "Go to update all information", edit_employee_path(@current_employee.id) %>
-    <div class="item">
-      <%= @current_employee.name %><button>Update</button>
-      <div class="form_for_name">
-        <%= form_with model: @employee do |f| %>
-          <%= f.text_field :name, placeholder: "Name" %>
-          <%= f.submit "Update" %>
-        <% end  %>
-      </div>
-    </div>
-    <div class="item">
-      <%= @current_employee.email %><button>Update</button>
-      <div class="form_for_email">
-        <%= form_with model: @employee do |f| %>
-          <%= f.text_field :name, placeholder: "Name" %>
-          <%= f.submit "Update" %>
-        <% end  %>
-      </div>
-    </div>
-    <div class="item">
-      <%= @current_employee.location %><button>Update</button>
-      <div class="form_for_location">
-        <%= form_with model: @employee do |f| %>
-          <%= f.text_field :name, placeholder: "Name" %>
-          <%= f.submit "Update" %>
-        <% end  %>
-      </div>
-    </div>
-    <div class="item">
-      <%= @current_employee.address %><button>Update</button>
-      <div class="form_for_address">
-        <%= form_with model: @employee do |f| %>
-          <%= f.text_field :name, placeholder: "Name" %>
-          <%= f.submit "Update" %>
-        <% end  %>
-      </div>
-    </div>
-    <div class="item">
-      <%= @current_employee.phone %><button>Update</button>
-      <div class="form_for_phone">
-        <%= form_with model: @employee do |f| %>
-          <%= f.text_field :name, placeholder: "Name" %>
-          <%= f.submit "Update" %>
-        <% end  %>
-      </div>
-    </div>
-    <div class="item">
-      <%= @current_employee.department.department %>
-    </div>
-    <div class="item">
-      <%= @current_employee.department.manager %>
-    </div>
+    <%  @current_employee.as_json.each do |e| %>
+      <% if e[0] != "id" && e[0] != "created_at" && e[0] != "updated_at" && e[0] != "password_digest" %>
+        <% if e[0] == "account_role" %>
+          <div class="item">
+            <span>Account Role: <%= e[1] %></span>
+          </div>
+        <% else %>
+          <% if e[0] == "department_id"%>
+            <div class="item">
+              <span>Department: <%= @current_employee.department.department %></span>
+            </div>
+            <div class="item">
+              <span>Manager: <%= @current_employee.department.manager %></span>
+            </div>
+          <% else%>
+            <div class="item">
+              <div class="item-value">
+                <span class="key"><%=e[0]%></span><span class="value"><%= e[1] %></span><button>Update</button>
+              </div>
+              <div class="form_for_<%= e[0] %>">
+                <%= form_with model: @employee, url: "/employees/#{@current_employee.id}", method: :patch do |f| %>
+                  <%= f.text_field e[0], placeholder: e[0] %>
+                  <%= f.submit "Update" %>
+                <% end  %>
+              </div>
+            </div>
+          <% end%>
+        <% end%>
+      <% end %>
+    <% end %>
   </div>
 </div>
 

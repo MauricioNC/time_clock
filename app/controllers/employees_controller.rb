@@ -26,7 +26,8 @@ class EmployeesController < ApplicationController
   def update
     @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
-      redirect_to employees_path, success: "Employee updated successfully"
+      # request.env["HTTP_REFERER"] stores the path from the update method was called
+      redirect_to request.env["HTTP_REFERER"], success: "Employee updated successfully"
       return
     else
       redirect_to edit_employee_path(@employee.id), error: "Something went wrong pleas try again."
@@ -49,6 +50,7 @@ class EmployeesController < ApplicationController
   end
 
   def account
+    @employee = Employee.find(@current_employee.id)
   end
 
   def settings

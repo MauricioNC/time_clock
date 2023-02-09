@@ -5,9 +5,9 @@
     <%= f.telephone_field :phone, placeholder: "Phone" %>
     <%= f.text_field :location, placeholder: "Location" %>
     <%= f.text_field :address, placeholder: "Address" %>
-    <%= f.text_field :account_role, placeholder: "Account role" %>
+    <%= f.text_field :account_role, placeholder: "Account role" unless @employee.id == @current_employee.id %>
     <% departments_array = Department.all.map { |dep| [dep.department, dep.id] } %>
-    <%= f.select :department_id, departments_array %>
+    <%= f.select :department_id, departments_array unless  @employee.id == @current_employee.id %>
     <%= f.submit "Update user" %>
   <% end  %>
 </div>
