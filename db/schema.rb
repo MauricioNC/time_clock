@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_02_01_212318) do
+ActiveRecord::Schema.define(version: 2023_02_11_074403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 2023_02_01_212318) do
   create_table "employee_schedules", force: :cascade do |t|
     t.datetime "check_in"
     t.datetime "checkout"
-    t.time "lunch"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "employee_id", null: false

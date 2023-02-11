@@ -1,0 +1,10 @@
+<%= form_with model: @employee_schedule, url: '/checkin' do |f| %>
+  <%= f.text_field :id, placeholder: "Enter your ID for check in" %>
+  <%= f.submit "Check in" %>
+<% end %>
+
+<%= form_with model: @employee_schedule, url: '/checkin' do |f| %>
+  <%= f.text_field :id, placeholder: "Enter your ID to for check out" %>
+  <%= f.submit "Check out" %>
+<% end %>
+

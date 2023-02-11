@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get '/settings', to: 'employees#settings'
 
   get '/schedule_of_activities', to: 'schedule_of_activities#index'
+
+  get '/checkin', to: 'employee_schedules#new'
+  post '/checkin', to: 'employee_schedules#create'
 end
