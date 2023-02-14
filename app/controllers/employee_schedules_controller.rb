@@ -26,25 +26,26 @@ class EmployeeSchedulesController < ApplicationController
   end
 
   def employee_arrived
-    @employee.employee_schedule
+    @employee.employee_schedules.group_by {|c| c.check_in.to_date == @check_time.to_date}.any?
   end
 
   def check_in
-    @employee_schedule = @employee.build_employee_schedule(check_in: @check_time)
+    @employee_schedule = @employee.employee_schedules.new(check_in: @check_time)
   end
 
   def check_out
-    @employee_schedule = @employee.employee_schedule.update(checkout: @check_time)
+    @employee_schedule = @employee.employee_schedules.update(checkout: @check_time)
   end
 
   def check_in_validations
     return true unless employee_arrived
-    raise "#{@employee.name}, you already checked in at: #{@check_time}" unless @employee.employee_schedule.check_in.nil?
+    raise "#{@employee.name}, you completed your schedule for today, please come back tommorrow!" unless employee_arrived == true && @employee.employee_schedules.where(check_in: @check_time).first.nil?
+    raise "#{@employee.name}, you can't check in again without a check out first" if employee_arrived
   end
 
   def check_out_validations
+    raise "#{@employee.name}, you completed your schedule for today, please come back tommorrow!" if employee_arrived && @employee.employee_schedules.first.checkout.nil? == false
     raise "#{@employee.name}, you cannot check out if you don't check in first, please check in." unless employee_arrived
-    raise "#{@employee.name}, you completed your schedule for today, please come back tommorrow!" if  @employee.employee_schedule.check_in.nil? == false && @employee.employee_schedule.checkout.nil? == false
   end
 
   private
