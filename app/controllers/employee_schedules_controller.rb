@@ -26,7 +26,7 @@ class EmployeeSchedulesController < ApplicationController
   end
 
   def employee_arrived
-    @employee.employee_schedules.last.check_in.to_date == @check_time.to_date
+    @employee.employee_schedules.last.nil? == false && @employee.employee_schedules.last.check_in.to_date == @check_time.to_date
   end
 
   def check_in
