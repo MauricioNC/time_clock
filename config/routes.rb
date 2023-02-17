@@ -20,4 +20,6 @@ Rails.application.routes.draw do
 
   get '/checkin', to: 'employee_schedules#new'
   post '/checkin', to: 'employee_schedules#create'
+
+  post '/absence', to: 'absences#create'
 end
