@@ -1,10 +1,14 @@
 class EmployeeSchedulesController < ApplicationController
+  include EmployeeSchedulesHelper
+
   def new
     @employee_schedule = EmployeeSchedule.new
   end
 
   def create
     @employee = Employee.find(employee_schedule_params[:id])
+
+    validate_absence @employee.id
 
     @check_time = DateTime.now
 
