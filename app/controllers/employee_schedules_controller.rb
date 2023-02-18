@@ -8,25 +8,36 @@ class EmployeeSchedulesController < ApplicationController
   def create
     @employee = Employee.find(employee_schedule_params[:id])
 
-    validate_absence @employee.id
+    if validate_absence(@employee.id)
+      redirect_to checkin_path, error: "#{@employee.name}, you cannot checkin or checkout because you arrived after 9:16 am, please come back tomorrow."
+      return
+    end
 
     @check_time = DateTime.now
 
     if params[:commit] == "Check in"
       check_in_validations
       check_in
-      redirect_to checkin_path, success: "Check in registered at: #{@check_time}" if @employee_schedule.save
-      return
+      if @employee_schedule.save
+        respond_to do |format|
+          format.html
+        end
+        flash[:success] = "Check in registered at: #{@check_time}"
+      end
     else
       check_out_validations
       check_out
-      redirect_to checkin_path, success: "Check out registered at: #{@check_time}"
+      respond_to do |format|
+        format.html
+      end
+      flash[:success] = "Check out registered at: #{@check_time}"
       return
     end
 
   rescue => e
     flash[:error] = e
     redirect_to checkin_path
+    return
   end
 
   def employee_arrived
