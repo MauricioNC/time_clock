@@ -1,18 +1,19 @@
 <main>
   <div class="top-cards">
     <div class="card card-employees">
-      <h4>Employees <span>23%</span></h4>
+      <h4>Employees <span><%= get_total_employees()  %></span></h4>
     </div>
     <div class="card card-resigned-employees">
-      <h4>Resigned employees <span>-13%</span></h4>
+      <h4>Absences <span><%= get_total_absences() %></span></h4>
     </div>
     <div class="card card-avg-early">
-      <h4>Average early</h4>
-      <span>7.0</span>
+      <h4>Average early <span><%= avg_early() %></span></h4>
+
     </div>
-    <div class="card card-applications">
-      <h4>Applications</h4>
-      <span>8</span>
+    <div class="card card-gender">
+      <h4>Personal gender</h4>
+      <span>Male: <%= get_gender_percentage("Male") %>%</span>
+      <span>Female: <%= get_gender_percentage("Female") %>%</span>
     </div>
   </div>
 
@@ -60,7 +61,7 @@
             <%= d.department %>
           </span>
           <span class="num-of-employees">
-            <%= (get_total_employees_by_department(d.department) * 100) / @total_employees %>%
+            <%= (get_total_employees_by_department(d.department) * 100) / get_total_employees() %>%
           </span>
         </div>
       <% end %>
