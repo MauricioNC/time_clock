@@ -31,8 +31,4 @@ module DashboardHelper
     return (female * 100) / get_total_employees if gender == "Female"
     return (male * 100) / get_total_employees if gender == "Male"
   end
-
-  def get_male_gender
-    Employee.where(gender: "Male")
-  end
 end
