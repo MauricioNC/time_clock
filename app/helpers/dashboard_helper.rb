@@ -31,4 +31,12 @@ module DashboardHelper
     return (female * 100) / get_total_employees if gender == "Female"
     return (male * 100) / get_total_employees if gender == "Male"
   end
+
+  def punctuality_percentage employee_id
+    employee = Employee.find(employee_id)
+    days_of_current_month = Date.new(2023, 02, -1).day
+
+    early_arrivals = employee.employee_schedules.count
+    @puntc_percentage = (early_arrivals * 100) / days_of_current_month
+  end
 end

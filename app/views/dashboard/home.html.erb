@@ -39,13 +39,15 @@
           <th>Account role</th>
           <th>Punctuality percentage</th>
         </tr>
-        <tr>
-          <td><%= @current_employee.name %></td>
-          <td><%= @current_employee.department.department %></td>
-          <td><%= @current_employee.location %></td>
-          <td><%= @current_employee.account_role %></td>
-          <td>100%</td>
-        </tr>
+         <% @employees.each do |e| %>
+          <tr>
+            <td><%= e.name %></td>
+            <td><%= e.department.department %></td>
+            <td><%= e.location %></td>
+            <td><%= e.account_role %></td>
+            <td><%= punctuality_percentage(e.id) %>%</td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>

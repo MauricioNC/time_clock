@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
 
   def home
     @departments = Department.all
+    @employees = Employee.all
   end
 
   def searcher
