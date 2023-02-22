@@ -17,13 +17,10 @@
     </div>
     <div class="arrived-time-status" id="arrived-time-status">
       <div id="check_in">
-        <%= "check_in: #{@employee_arrived_time.check_in}" %>
+        <%= @employee_arrived_time.checkout ? "check_in: #{@employee_arrived_time.check_in.strftime("%d-%m-%y at %H:%m")}" : "check_in: --"  %>
       </div>
       <div id="checkout">
-        <%= @employee_arrived_time.checkout ? "check_out: #{@employee_arrived_time.checkout}" : "check_out: --"  %>
-      </div>
-      <div id="lunch">
-        <%= @employee_arrived_time.lunch %>
+        <%= @employee_arrived_time.checkout ? "check_out: #{@employee_arrived_time.checkout.strftime("%d-%m-%y at %H:%m")}" : "check_out: --"  %>
       </div>
     </div>
     <div class="other-information" id="other-information">
